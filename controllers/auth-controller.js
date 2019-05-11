@@ -1,5 +1,7 @@
+const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator/check');
 const render = require('../util/render');
+const User = require('../models/user');
 
 /**
  * GET /auth/login
@@ -8,7 +10,7 @@ const render = require('../util/render');
  * @param  {} next
  */
 exports.getLogin = (req, res, next) => {
-	res.render('auth/login');
+	return render('auth/login', req, res);
 };
 
 /**
@@ -28,17 +30,17 @@ exports.postLogin = async (req, res, next) => {
  * @param  {} next
  */
 exports.getRegister = (req, res, next) => {
-	res.render('auth/register');
+	return render('auth/register', req, res);
 };
 
 /**
- * POST /auth/resgister
+ * POST /auth/register
  * @param  {} req
  * @param  {} res
  * @param  {} next
  */
 exports.postRegister = async (req, res, next) => {
-	const imputs = req.body;
+	const inputs = req.body;
 	const errors = validationResult(req);
 
 	if (!errors.isEmpty()) {
@@ -48,6 +50,27 @@ exports.postRegister = async (req, res, next) => {
 	}
 
 	try {
+		// Generate password hash
+		const hashedPwd = await bcrypt.hash(inputs.password, 12);
+		if (!hashedPwd) {
+			req.flash('error', 'Oops! An error occurred, please try again.');
+			return res.redirect('/auth/register');
+		}
+
+		const user = new User({
+			name: inputs.fullname,
+			email: inputs.email,
+			password: hashedPwd
+		});
+
+		const dbUser = await user.save();
+		if (!dbUser) {
+			req.flash('error', 'Oops! An error occurred, please try again.');
+			return res.redirect('/auth/register');
+		}
+
+		req.flash('success', 'Registered successfully.');
+		return res.redirect('/auth/login');
 	} catch (err) {
 		next(err);
 	}

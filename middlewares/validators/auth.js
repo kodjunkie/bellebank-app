@@ -1,7 +1,7 @@
 const { body } = require('express-validator/check');
 
 exports.register = [
-	body('name')
+	body('fullname')
 		.trim()
 		.isLength({ min: 5 })
 		.withMessage('Name must not be less than 5 characters'),

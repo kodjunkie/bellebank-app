@@ -20,7 +20,7 @@
   "author": "Lawrence Onah",
   "license": "MIT",
   "engines": {
-    "node": "10.15.0"
+    "node": "10.15.3"
   },
   "bugs": {
     "url": "https://github.com/Paplow/bellebank-app/issues"
