@@ -5,8 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
-  <meta name="generator" content="Jekyll v3.8.5" />
+  <meta name="author" content="Lawrence Onah and Bootstrap contributors" />
   <title>Belle Bank</title>
   <!-- Bootstrap core CSS -->
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -16,15 +15,18 @@
 
 <body class="text-center">
   <form class="form-signin">
-    <img class="mb-4" src="/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
-    <h1 class="h3 mb-3 font-weight-normal">Create an account</h1>
+    <a href="/"><img class="mb-4" src="/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"></a>
+    <h1 class="h3 mb-3 font-weight-normal">Join Bellebank</h1>
     <label for="fullname" class="sr-only">Full name</label>
     <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" required autofocus />
     <label for="email" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" class="form-control" placeholder="E-mail Address" name="email" required />
     <label for="password" class="sr-only">Password</label>
     <input type="password" id="password" class="form-control" placeholder="Password" name="password" required />
-    <hr>
+    <div class="mb-3">
+      Already have an account? <a href="/auth/login">Sign in</a>
+    </div>
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">
       Sign up
     </button>

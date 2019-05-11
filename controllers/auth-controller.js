@@ -1,3 +1,6 @@
+const { validationResult } = require('express-validator/check');
+const render = require('../util/render');
+
 /**
  * GET /auth/login
  * @param  {} req
@@ -14,7 +17,7 @@ exports.getLogin = (req, res, next) => {
  * @param  {} res
  * @param  {} next
  */
-exports.postLogin = (req, res, next) => {
+exports.postLogin = async (req, res, next) => {
 	//
 };
 
@@ -34,8 +37,20 @@ exports.getRegister = (req, res, next) => {
  * @param  {} res
  * @param  {} next
  */
-exports.postRegister = (req, res, next) => {
-	//
+exports.postRegister = async (req, res, next) => {
+	const imputs = req.body;
+	const errors = validationResult(req);
+
+	if (!errors.isEmpty()) {
+		return render('auth/register', req, res, {
+			validatorErrors: errors.array()
+		});
+	}
+
+	try {
+	} catch (err) {
+		next(err);
+	}
 };
 
 /**

@@ -6,5 +6,5 @@
  * @param  {} next
  */
 exports.getIndex = (req, res, next) => {
-	res.render('user/dashboard');
+	res.render('index');
 };
