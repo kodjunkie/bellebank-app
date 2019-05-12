@@ -7,5 +7,5 @@
 <% } %>
 
 <% if(flash && flash.message) { %>
-<div class="alert alert-success"><%= flash.message %></div>
+<p class="text-<%= flash.success ? 'success' : 'danger' %>" style="font-size: small"><%= flash.message %></p>
 <% } %>

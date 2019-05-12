@@ -1,3 +1,5 @@
+const render = require('../util/render');
+
 /**
  * GET /
  * Landing page
@@ -6,5 +8,9 @@
  * @param  {} next
  */
 exports.getIndex = (req, res, next) => {
-	res.render('index');
+	if (!req.session.isLoggedIn) {
+		return render('index', req, res);
+	}
+
+	res.render('user/dashboard');
 };

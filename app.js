@@ -11,15 +11,17 @@ const flash = require('connect-flash');
 
 const pageRoutes = require('./routes/pages');
 const authRoutes = require('./routes/auth');
+const { addToRequest } = require('./middlewares/user');
 
 // Configurations
+dotenv.config();
 const app = express();
+
 const store = new MongoDBStore({
 	uri: process.env.MONGODB_URI,
 	collection: 'sessions'
 });
 
-dotenv.config();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -37,6 +39,7 @@ app.use(
 );
 app.use(csrf());
 app.use(flash());
+app.use(addToRequest);
 
 // Global variable for all views
 app.use((req, res, next) => {
