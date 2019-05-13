@@ -31,7 +31,7 @@ $(function() {
 			],
 			datasets: [
 				{
-					data: [15339, 21345, 18483, 0, 23489, 24092, 12034],
+					data: [15339, 21345, 18483, 26771, 23489, 24092, 12034],
 					lineTension: 0,
 					backgroundColor: 'transparent',
 					borderColor: '#007bff',
