@@ -9,9 +9,11 @@ const mongoose = require('mongoose');
 const csrf = require('csurf');
 const flash = require('connect-flash');
 
-const pageRoutes = require('./routes/pages');
+const pageRoutes = require('./routes/page');
 const authRoutes = require('./routes/auth');
-const { addToRequest } = require('./middlewares/user');
+const vendorRoutes = require('./routes/vendor');
+const mealRoutes = require('./routes/meal');
+const { addAuthUserToRequest } = require('./middlewares/user');
 
 // Configurations
 dotenv.config();
@@ -39,7 +41,7 @@ app.use(
 );
 app.use(csrf());
 app.use(flash());
-app.use(addToRequest);
+app.use(addAuthUserToRequest);
 
 // Global variable for all views
 app.use((req, res, next) => {
@@ -52,6 +54,8 @@ app.use((req, res, next) => {
 // Routes
 app.use(pageRoutes);
 app.use('/auth', authRoutes);
+app.use('/meals', mealRoutes);
+app.use('/vendors', vendorRoutes);
 
 // Error handler
 app.use((error, req, res, next) => {

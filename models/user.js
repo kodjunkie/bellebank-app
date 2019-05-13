@@ -16,6 +16,10 @@ const userSchema = new Schema(
 			type: Boolean,
 			default: false
 		},
+		fund: {
+			type: Number,
+			default: 5000
+		},
 		password: {
 			type: String,
 			required: true

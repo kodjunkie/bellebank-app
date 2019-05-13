@@ -1,17 +1,24 @@
 const express = require('express');
-const authConteroller = require('../controllers/auth-controller');
+
+const authController = require('../controllers/auth-controller');
 const validator = require('../middlewares/validators/auth');
+const { isGuest, isAuth } = require('../middlewares/user');
 
 const router = express.Router();
 
-router.get('/login', authConteroller.getLogin);
+router.get('/login', isGuest, authController.getLogin);
 
-router.post('/login', validator.login, authConteroller.postLogin);
+router.post('/login', isGuest, validator.login, authController.postLogin);
 
-router.post('/register', validator.register, authConteroller.postRegister);
+router.post(
+	'/register',
+	isGuest,
+	validator.register,
+	authController.postRegister
+);
 
-router.get('/register', authConteroller.getRegister);
+router.get('/register', isGuest, authController.getRegister);
 
-router.get('/logout', authConteroller.getLogout);
+router.get('/logout', isAuth, authController.getLogout);
 
 module.exports = router;
