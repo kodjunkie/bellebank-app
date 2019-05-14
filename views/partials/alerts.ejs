@@ -1,0 +1,11 @@
+<% if(validatorErrors && validatorErrors.length > 0) { %>
+<ul style="list-style-type: none; padding: 0">
+  <% validatorErrors.map(d => { %>
+  <li style="font-size: small" class="text-danger"><%= d.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<% if(flash && flash.message) { %>
+<p class="text-<%= flash.success ? 'success' : 'danger' %>" style="font-size: small"><%= flash.message %></p>
+<% } %>
