@@ -1,5 +1,6 @@
 const Order = require('../models/order');
 const render = require('../util/render');
+const { title } = require('../util/page');
 
 /**
  * GET /
@@ -20,6 +21,7 @@ exports.getIndex = async (req, res, next) => {
 			.lean();
 
 		return render('user/dashboard', req, res, {
+			pageTitle: title('Dashboard'),
 			path: '/',
 			orders
 		});

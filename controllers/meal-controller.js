@@ -3,6 +3,7 @@ const randomInt = require('random-int');
 
 const render = require('../util/render');
 const Order = require('../models/order');
+const { title } = require('../util/page');
 
 /**
  * GET /meals
@@ -13,6 +14,7 @@ const Order = require('../models/order');
  */
 exports.getIndex = (req, res, next) => {
 	return render('pages/meals', req, res, {
+		pageTitle: title('Meals'),
 		path: '/meals'
 	});
 };
