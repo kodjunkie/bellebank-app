@@ -1,4 +1,5 @@
 const render = require('../util/render');
+const { title } = require('../util/page');
 
 /**
  * GET /vendors
@@ -9,6 +10,7 @@ const render = require('../util/render');
  */
 exports.getIndex = (req, res, next) => {
 	return render('pages/vendors', req, res, {
+		pageTitle: title('Vendors'),
 		path: '/vendors'
 	});
 };
