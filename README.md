@@ -1,6 +1,6 @@
 # Belle Bank App
 
-A simple meal subscription service prototype application, using the Federal University of Technology, Minna as a case study.
+A simple meal subscription prototype application, using the Federal University of Technology, Minna as a case study.
 
 `Belle bank is a web application which enables students of Federal University of technology, Minna to subscribe for food packages when there is availability of money and allows them to order for food untiltheir subscription is exhausted.`
 
